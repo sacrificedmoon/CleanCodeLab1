@@ -7,12 +7,34 @@ namespace CleanCodeLab1
         static void Main(string[] args)
         {
             Program program = new Program();
-            program.FizzBuzz(300);
+            program.UserInput();
         }
+
+        public void UserInput()
+        {
+            Console.WriteLine("Ange ett heltal mellan 1 och 300: ");
+            try
+            {
+                int userInput = Convert.ToInt32(Console.ReadLine());
+                if (userInput< 1 || userInput > 300)
+                {
+                    UserInput();
+                }
+                else 
+                {
+                    FizzBuzz(userInput);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                UserInput();
+            }
+            
+        } 
 
         public void FizzBuzz(int maxNumber)
         {
-            
             for (int i = 1; i <= maxNumber; i++)
             {
                 if(i == 42)

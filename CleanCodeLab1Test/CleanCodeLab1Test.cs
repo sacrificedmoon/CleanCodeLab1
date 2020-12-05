@@ -16,6 +16,22 @@ namespace CleanCodeLab1Test
         }
 
         [TestMethod]
+        public void UserInputTest()
+        {
+            using(StringWriter stringWriter = new StringWriter())
+            {
+                Console.SetOut(stringWriter);
+                var userInput = new StringReader("300");
+                Console.SetIn(userInput);
+                var expected = string.Format("Ange ett heltal mellan 1 och 300: ", Environment.NewLine);
+                var actual = stringWriter.ToString();
+
+                program.UserInput();
+                Assert.AreNotEqual(expected, stringWriter.ToString());
+            }
+        }
+
+        [TestMethod]
         public void FizzbuzzTest()
         {
             using (StringWriter stringWriter = new StringWriter())

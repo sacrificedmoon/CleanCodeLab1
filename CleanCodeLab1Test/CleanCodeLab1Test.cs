@@ -27,46 +27,28 @@ namespace CleanCodeLab1Test
                 var actual = stringWriter.ToString();
 
                 program.UserInput();
-                Assert.AreNotEqual(expected, stringWriter.ToString());
+                Assert.AreNotEqual(expected, actual);
             }
         }
 
         [TestMethod]
         public void FizzbuzzTest()
         {
-            using (StringWriter stringWriter = new StringWriter())
-            {
-                Console.SetOut(stringWriter);
-                int maxNum = 300;
-                program.FizzBuzz(maxNum);
-                string expected = null;
-                var newLine = Environment.NewLine;
+            string fizz = "Fizz";
+            string buzz = "Buzz";
+            string fizzBuzz = "Fizzbuzz";
+            string theAnswer = "Answer to the Ultimate Question of Life, the Universe, and Everything";
 
-                for (int i = 1; i <= maxNum; i++)
-                {
-                    if (i == 42)
-                    {
-                        expected += string.Format($"Answer to the Ultimate Question of Life, the Universe, and Everything{newLine}");
-                    }
-                    else if (i % 3 == 0 && i % 5 == 0)
-                    {
-                        expected += string.Format($"Fizzbuzz{newLine}");
-                    }
-                    else if (i % 3 == 0)
-                    {
-                        expected += string.Format($"Fizz{newLine}");
-                    }
-                    else if (i % 5 == 0)
-                    {
-                        expected += string.Format($"Buzz{newLine}");
-                    }
-                    else
-                    {
-                        expected += string.Format($"{i}{newLine}");
-                    }
-                }
-                Assert.AreEqual(expected, stringWriter.ToString());
-            }
+            var expectedFizz = program.FizzBuzz(24);
+            var expectedBuzz = program.FizzBuzz(20);
+            var expectedFizzBuzz = program.FizzBuzz(30);
+            var expectedAnswer = program.FizzBuzz(42);
+
+            Assert.AreEqual(expectedFizz, fizz);
+            Assert.AreEqual(expectedBuzz, buzz);
+            Assert.AreEqual(expectedFizzBuzz, fizzBuzz);
+            Assert.AreEqual(expectedAnswer, theAnswer);
+            
         }
     }
 }

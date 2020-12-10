@@ -22,7 +22,10 @@ namespace CleanCodeLab1
                 }
                 else 
                 {
-                    FizzBuzz(userInput);
+                    for (int i = 0; i <= userInput; i++)
+                    {
+                        Console.WriteLine(FizzBuzz(i));
+                    }
                 }
             }
             catch (Exception e)
@@ -33,31 +36,31 @@ namespace CleanCodeLab1
             
         } 
 
-        public void FizzBuzz(int maxNumber)
+        public string FizzBuzz(int number)
         {
-            for (int i = 1; i <= maxNumber; i++)
+            string output;
+            
+            if(number == 42)
             {
-                if(i == 42)
-                {
-                    Console.WriteLine("Answer to the Ultimate Question of Life, the Universe, and Everything");
-                }
-                else if(i % 3 == 0 && i % 5 == 0)
-                {
-                    Console.WriteLine("Fizzbuzz");
-                }
-                else if(i % 3 == 0)
-                {
-                    Console.WriteLine("Fizz");
-                }
-                else if(i % 5 == 0)
-                {
-                    Console.WriteLine("Buzz");
-                }
-                else
-                {
-                    Console.WriteLine(i);
-                }
+                output = "Answer to the Ultimate Question of Life, the Universe, and Everything";
             }
+            else if(number % 3 == 0 && number % 5 == 0)
+            {
+                output = "Fizzbuzz";
+            }
+            else if(number % 3 == 0)
+            {
+                output = "Fizz";
+            }
+            else if(number % 5 == 0)
+            {
+                output = "Buzz";
+            }
+            else
+            {
+                output = number.ToString();
+            }
+            return output;
         }
     }
 }
